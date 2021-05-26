@@ -11,12 +11,10 @@ const checkForShip = (player, coordinates) => {
       );
     })[0];
 
-    if (!shipPresent) {
-      return false;
-    } else {
-      return true;
-    }
+    if (shipPresent) return true;
   }
+
+  return false;
 };
 
 module.exports.checkForShip = checkForShip;
