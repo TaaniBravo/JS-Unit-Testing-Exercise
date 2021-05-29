@@ -79,3 +79,14 @@ describe("check for ship", () => {
     expect(checkForShip(player, [9, 9])).to.be.false;
   });
 });
+
+describe("damageShip", () => {
+  const damageShip = require("../game_logic/ship_methods").damageShip;
+
+  it("should register damage on a give ship at a given loaction", () => {
+    const ship = {
+      locations: [[0, 0]],
+      damage: []
+    };
+  });
+});
