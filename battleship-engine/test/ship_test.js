@@ -88,5 +88,9 @@ describe("damageShip", () => {
       locations: [[0, 0]],
       damage: []
     };
+
+    damageShip(ship, [0, 0]);
+
+    expect(ship.damage).to.not.be.empty;
   });
 });
