@@ -83,7 +83,7 @@ describe("check for ship", () => {
 describe("damageShip", () => {
   const damageShip = require("../game_logic/ship_methods").damageShip;
 
-  it("should register damage on a give ship at a given loaction", () => {
+  it("should register damage on a given ship at a given loaction", () => {
     const ship = {
       locations: [[0, 0]],
       damage: []
@@ -92,5 +92,6 @@ describe("damageShip", () => {
     damageShip(ship, [0, 0]);
 
     expect(ship.damage).to.not.be.empty;
+    expect(ship.damage[0]).to.deep.equal([0, 0]);
   });
 });
