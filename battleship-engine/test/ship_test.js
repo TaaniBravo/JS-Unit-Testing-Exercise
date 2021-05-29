@@ -95,3 +95,37 @@ describe("damageShip", () => {
     expect(ship.damage[0]).to.deep.equal([0, 0]);
   });
 });
+
+// Now we need a method that players can call to fire on their opponent.
+// It should use checkForShip to confirm the attacking players guess.
+// It should use damageShip to register damage on their opponent.
+// Using equal and not.equal for some test specs.
+
+describe("attackShip", () => {
+  const checkForShip = require("../game_logic/ship_methods").checkForShip;
+  const damageShip = require("../game_logic/ship_methods").damageShip;
+
+  it("should check if the attacking players guess was correct and add damage if the opponent's ship was located on the attacking player's guess", () => {
+    const player = {
+      ships: [
+        {
+          locations: [
+            [0, 0],
+            [0, 1],
+            [0, 2]
+          ],
+          damage: [[0, 1]]
+        }
+      ]
+    };
+
+    if (checkForShip(player, [0, 0])) {
+      damageShip(player.ships[0], [0, 0]);
+    }
+
+    expect(checkForShip(player, [0, 0])).to.be.true;
+    expect(checkForShip(player, [1, 1])).to.be.false;
+    expect(player.ships[0].damage).to.deep.include([0, 0]);
+    expect(player.ships[0].damage).to.not.deep.include([1, 1]);
+  });
+});
